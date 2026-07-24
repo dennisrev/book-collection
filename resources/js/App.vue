@@ -1,10 +1,13 @@
 <template>
     <nav>
-        <div>
-            <RouterLink :to="{name: 'books.overview'}">Boeken Overzicht</RouterLink>
+        <div align="center">
+            <RouterLink :to="{name: 'books.overview'}">Overzicht boeken</RouterLink>
         </div>
-        <div>
+        <div align="center">
             <RouterLink :to="{name: 'books.create'}">Nieuw Boek</RouterLink>
+        </div>
+        <div align="center">
+            <RouterLink :to="{name: 'authors.overview'}">Overzicht auteurs</RouterLink>
         </div>
     </nav>
     <hr>

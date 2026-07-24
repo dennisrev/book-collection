@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {ref, computed} from 'vue';
 
-interface Book {
+export interface Book {
     id: number;
     title: string;
     summary: string;
