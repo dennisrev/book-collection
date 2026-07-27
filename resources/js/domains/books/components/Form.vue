@@ -2,22 +2,22 @@
 
 import { ref, onMounted } from 'vue';
 import { fetchAuthors, getAllAuthors } from '../../authors/store';
-import type { NewBook } from '../store';
+import type { Book } from '../store';
 
 onMounted(() => {
     fetchAuthors();
 });
 
 const props = defineProps<{
-    book: NewBook
+    book: Book & { id?: number }
     buttonText: string
 }>();
 
 const emit = defineEmits<{
-    (event: 'submit', book: NewBook): void
+    (event: 'submit', book: Book): void
 }>();
 
-const form = ref<NewBook>({
+const form = ref<Book>({
     title: props.book.title,
     summary: props.book.summary,
     author_id: props.book.author_id,
