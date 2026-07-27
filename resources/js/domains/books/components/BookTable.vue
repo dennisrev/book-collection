@@ -3,6 +3,8 @@
 import type { BookWithId } from '../store';
 
 import { getAuthorById } from '../../authors/store';
+import { deleteBook } from '../store';
+
 
 const props = defineProps<{
     books: BookWithId[]
@@ -25,6 +27,9 @@ const props = defineProps<{
                 <RouterLink :to="{ name: 'books.edit', params: { id: book.id } }">
                     <button type="button">Bewerken</button>
                 </RouterLink>
+            </td>
+            <td>
+                <button @click="deleteBook(book.id)">Verwijderen</button>
             </td>
         </tr>
     </table>

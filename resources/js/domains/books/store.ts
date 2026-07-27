@@ -1,8 +1,6 @@
 import axios from 'axios';
 import {ref, computed} from 'vue';
 
-import type { Author } from '../authors/store'; 
-
 export interface BookWithId {
     id: number;
     title: string;
@@ -38,4 +36,9 @@ export const updateBook = async (id: number, updatedBook: Book) => {
     const { data } = await axios.put(`/api/books/${id}`, updatedBook);
     if (!data) return;
     books.value = data;
+};
+
+export const deleteBook = async (id: number) => {
+    await axios.delete(`/api/books/${id}`);
+    books.value = books.value.filter(book => book.id !== id);
 };
