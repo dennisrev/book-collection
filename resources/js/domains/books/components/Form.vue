@@ -14,7 +14,7 @@ const props = defineProps<{
 }>();
 
 const emit = defineEmits<{
-    (event: 'submit', product: NewBook): void
+    (event: 'submit', book: NewBook): void
 }>();
 
 const form = ref<NewBook>({
@@ -42,7 +42,7 @@ const handleSubmit = () => emit('submit', form.value);
         </div>
         <div>
             <label for="author">Auteur:</label>
-            <select id="author "v-model="form.author_id" required>
+            <select id="author" v-model="form.author_id" required>
                 <option v-for="author in getAllAuthors" :key="author.id" :value="author.id">
                     {{ author.name }}
                 </option>

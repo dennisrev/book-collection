@@ -13,7 +13,7 @@ const book: NewBook = {
     author_id: 0,
 };
 
-const handleBookSubmit = async (data) => {
+const handleBookSubmit = async (data: NewBook) => {
     await createBook(data);
     router.push({name: 'books.overview'});
 };
@@ -26,5 +26,3 @@ const handleBookSubmit = async (data) => {
         <Form :book="book" button-text="Toevoegen" @submit="handleBookSubmit" />
     </div>
 </template>
-<!-- 
-TO DO: AUTEURS MEEGEVEN IN HET OVERZICHT  (voor maandag 27 juli)-->

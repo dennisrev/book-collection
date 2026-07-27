@@ -1,10 +1,13 @@
 import axios from 'axios';
 import {ref, computed} from 'vue';
 
+import type { Author } from '../authors/store'; 
+
 export interface Book {
     id: number;
     title: string;
     summary: string;
+    author_id: number;
 };
 
 export interface NewBook {
@@ -24,7 +27,7 @@ export const fetchBooks = async () => {
 };
 
 export const createBook = async (newBook: NewBook) => {
-    const {data} = await axios.post('/api/books');
+    const {data} = await axios.post('/api/books', newBook);
     if(!data) return
     books.value = data;
 };

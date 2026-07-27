@@ -10,13 +10,13 @@ use App\Http\Resources\BookResource;
 class BookController extends Controller
 {
     public function index() {
-        return BookResource::collection(Book::all());
+    $books = Book::get();
+    return BookResource::collection($books);
     }
 
     public function store(StoreBookRequest $request) {
-        $book = Book::create($request->validated());
-
-        $books = Book::all();
+        Book::create($request->validated());
+        $books = Book::get();
         return BookResource::collection($books);
     }
 }
