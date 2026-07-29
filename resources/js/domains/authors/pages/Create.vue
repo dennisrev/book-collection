@@ -7,6 +7,7 @@ import {useRouter} from 'vue-router';
 const router = useRouter();
 
 const author: Author = {
+    id: 0,
     name: '',
 };
 

@@ -8,15 +8,15 @@ onMounted(() => {
 });
 
 const props = defineProps<{
-    book: Book & {id?: number};
+    book: Book;
     buttonText: string;
 }>();
 
 const emit = defineEmits<{
-    (event: 'submit', book: Book & {id?: number}): void;
+    (event: 'submit', book: Book): void;
 }>();
 
-const bookTemp = ref<Book & {id?: number}>(structuredClone(toRaw(props.book)));
+const bookTemp = ref<Book>({...props.book});
 
 const handleSubmit = () => emit('submit', bookTemp.value);
 </script>

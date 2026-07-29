@@ -3,15 +3,15 @@ import {ref, toRaw} from 'vue';
 import type {Author} from '../store';
 
 const props = defineProps<{
-    author: Author & {id?: number};
+    author: Author;
     buttonText: string;
 }>();
 
 const emit = defineEmits<{
-    (event: 'submit', author: Author & {id?: number}): void;
+    (event: 'submit', author: Author): void;
 }>();
 
-const authorTemp = ref<Author & {id?: number}>(structuredClone(toRaw(props.author)));
+const authorTemp = ref<Author>({...props.author});
 
 const handleSubmit = () => emit('submit', authorTemp.value);
 </script>

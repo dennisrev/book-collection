@@ -1,15 +1,12 @@
 <script setup lang="ts">
+import type {Book} from '../store';
 
-import type { BookWithId } from '../store';
-
-import { getAuthorById } from '../../authors/store';
-import { deleteBook } from '../store';
-
+import {getAuthorById} from '../../authors/store';
+import {deleteBook} from '../store';
 
 const props = defineProps<{
-    books: BookWithId[]
+    books: Book[];
 }>();
-
 </script>
 
 <template>
@@ -24,7 +21,7 @@ const props = defineProps<{
             <td>{{ book.summary }}</td>
             <td>{{ getAuthorById(book.author_id).value?.name }}</td>
             <td>
-                <RouterLink :to="{ name: 'books.edit', params: { id: book.id } }">
+                <RouterLink :to="{name: 'books.edit', params: {id: book.id}}">
                     <button type="button">Bewerken</button>
                 </RouterLink>
             </td>
@@ -33,5 +30,4 @@ const props = defineProps<{
             </td>
         </tr>
     </table>
-
 </template>

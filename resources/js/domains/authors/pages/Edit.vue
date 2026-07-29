@@ -14,8 +14,8 @@ onMounted(() => {
 
 const author = getAuthorById(Number(route.params.id));
 
-const handleAuthorSubmit = async (data: Author & {id?: number}) => {
-    await updateAuthor(Number(route.params.id), data);
+const handleAuthorSubmit = async (data: Author) => {
+    await updateAuthor(data);
     router.push({name: 'authors.overview'});
 };
 </script>

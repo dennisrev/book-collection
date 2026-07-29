@@ -7,6 +7,7 @@ import {useRouter} from 'vue-router';
 const router = useRouter();
 
 const book: Book = {
+    id: 0,
     title: '',
     summary: '',
     author_id: 0,

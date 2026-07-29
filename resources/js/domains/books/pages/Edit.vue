@@ -14,8 +14,8 @@ onMounted(() => {
 
 const book = getBookById(Number(route.params.id));
 
-const handleBookSubmit = async (data: Book & {id?: number}) => {
-    await updateBook(Number(route.params.id), data);
+const handleBookSubmit = async (data: Book) => {
+    await updateBook(data);
     router.push({name: 'books.overview'});
 };
 </script>

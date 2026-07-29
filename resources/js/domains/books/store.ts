@@ -1,20 +1,14 @@
 import axios from 'axios';
 import {ref, computed} from 'vue';
 
-export interface BookWithId {
+export interface Book {
     id: number;
     title: string;
     summary: string;
     author_id: number;
 }
 
-export interface Book {
-    title: string;
-    summary: string;
-    author_id: number;
-}
-
-const books = ref<BookWithId[]>([]);
+const books = ref<Book[]>([]);
 
 export const getAllBooks = computed(() => books.value);
 
@@ -32,8 +26,8 @@ export const createBook = async (newBook: Book) => {
     books.value = data;
 };
 
-export const updateBook = async (id: number, updatedBook: Book & {id?: number}) => {
-    const {data} = await axios.put(`/api/books/${id}`, updatedBook);
+export const updateBook = async (updatedBook: Book) => {
+    const {data} = await axios.put(`/api/books/${updatedBook.id}`, updatedBook);
     if (!data) return;
     books.value = data;
 };
