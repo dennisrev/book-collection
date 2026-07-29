@@ -1,11 +1,9 @@
 <script setup lang="ts">
-
-import type { Author } from '../store';
+import type {Author} from '../store';
 
 const props = defineProps<{
-    authors: Author[]
+    authors: Author[];
 }>();
-
 </script>
 
 <template>
@@ -17,5 +15,4 @@ const props = defineProps<{
             <td>{{ author.name }}</td>
         </tr>
     </table>
-
 </template>

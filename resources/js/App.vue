@@ -7,11 +7,14 @@
             <RouterLink :to="{name: 'books.create'}">Nieuw boek toevoegen</RouterLink>
         </div>
         <div align="center">
+            <RouterLink :to="{name: 'authors.create'}">Nieuwe auteur toevoegen</RouterLink>
+        </div>
+        <div align="center">
             <RouterLink :to="{name: 'authors.overview'}">Overzicht auteurs</RouterLink>
         </div>
     </nav>
-    <hr>
+    <hr />
     <main>
-            <RouterView></RouterView>
+        <RouterView></RouterView>
     </main>
 </template>
