@@ -24,7 +24,7 @@ class AuthorController extends Controller
         return AuthorResource::collection($authors);
     }
 
-    public function update(StoreBookRequest $request, Author $author)
+    public function update(StoreAuthorRequest $request, Author $author)
     {
         $author->update($request->validated());
 
