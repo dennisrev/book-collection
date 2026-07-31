@@ -1,7 +1,11 @@
 <script setup lang="ts">
-import {ref, onMounted, toRaw} from 'vue';
+import { ref, onMounted } from 'vue';
 import {fetchAuthors, getAllAuthors} from '../../authors/store';
-import type {Book} from '../store';
+import type { Book } from '../store';
+
+// onMounted(() => {
+//     authorStore.actions.getAll();
+// });
 
 onMounted(() => {
     fetchAuthors();

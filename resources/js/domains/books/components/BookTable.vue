@@ -2,11 +2,17 @@
 import type {Book} from '../store';
 
 import {getAuthorById} from '../../authors/store';
-import {deleteBook} from '../store';
+
+import { bookStore } from '../store';
 
 const props = defineProps<{
     books: Book[];
 }>();
+
+const handleBookDelete = async (id:number) => {
+    await bookStore.actions.delete(id);
+};
+
 </script>
 
 <template>
@@ -26,7 +32,7 @@ const props = defineProps<{
                 </RouterLink>
             </td>
             <td>
-                <button @click="deleteBook(book.id)">Verwijderen</button>
+                <button @click="handleBookDelete(book.id)">Verwijderen</button>
             </td>
         </tr>
     </table>

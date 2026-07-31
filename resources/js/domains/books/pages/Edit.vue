@@ -1,21 +1,21 @@
 <script setup lang="ts">
 import BookForm from '../components/BookForm.vue';
-import type {Book} from '../store';
-import {onMounted} from 'vue';
-import {fetchBooks, updateBook, getBookById} from '../store';
-import {useRoute, useRouter} from 'vue-router';
+import type { Book } from '../store';
+import { onMounted } from 'vue';
+import { bookStore } from '../store';
+import { useRoute, useRouter } from 'vue-router';
 
 const route = useRoute();
 const router = useRouter();
 
 onMounted(() => {
-    fetchBooks();
+    bookStore.actions.getAll();
 });
 
-const book = getBookById(Number(route.params.id));
+const book = bookStore.getters.getById(Number(route.params.id));
 
 const handleBookSubmit = async (data: Book) => {
-    await updateBook(data);
+    await bookStore.actions.update(data);
     router.push({name: 'books.overview'});
 };
 </script>

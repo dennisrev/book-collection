@@ -1,14 +1,18 @@
 <script setup lang="ts">
 
-import { onMounted } from 'vue'; 
-import { fetchBooks, getAllBooks } from '../store'; 
+import { computed, onMounted } from 'vue';  
+import { bookStore } from '../store.js';
 import BookTable from '../components/BookTable.vue';
 
 onMounted(() => {
-    fetchBooks();
+    const isStoreEmpty = Object.keys(bookStore.getters.all.value).length === 0;
+    
+    if (isStoreEmpty) {
+        bookStore.actions.getAll();
+    }
 });
 
-const allBooks = getAllBooks;
+const allBooks = computed(() => Object.values(bookStore.getters.all.value));
 
 </script>
 

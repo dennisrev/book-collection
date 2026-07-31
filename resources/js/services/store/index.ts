@@ -5,7 +5,8 @@ export const storeModuleFactory = (moduleName: string) => {
     const state = ref<Record<number, any>>({});
 
     const getters = {
-        all: computed(() => state.value)
+        all: computed(() => state.value),
+        getById: (id: number) => computed(() => state.value[id]),
     };
 
     const setters = {
@@ -24,7 +25,7 @@ export const storeModuleFactory = (moduleName: string) => {
             setters.setAll(data);
         },
         create: async (item: {id: number; [key: string]: any}) => {
-            const { data } = await postRequest(moduleName, item);
+            const { data } = await postRequest(`${moduleName}`, item);
             if (!data) return;
             setters.setAll(data);
         },
