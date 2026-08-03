@@ -1,15 +1,14 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import {fetchAuthors, getAllAuthors} from '../../authors/store';
+
+import { authorStore } from '../../authors/store';
 import type { Book } from '../store';
 
-// onMounted(() => {
-//     authorStore.actions.getAll();
-// });
-
 onMounted(() => {
-    fetchAuthors();
+     authorStore.actions.getAll();
 });
+
+const allAuthors = authorStore.getters.all;
 
 const props = defineProps<{
     book: Book;
@@ -23,6 +22,8 @@ const emit = defineEmits<{
 const bookTemp = ref<Book>({...props.book});
 
 const handleSubmit = () => emit('submit', bookTemp.value);
+
+
 </script>
 
 <template>
@@ -39,7 +40,7 @@ const handleSubmit = () => emit('submit', bookTemp.value);
             <div>
                 <label for="author">Auteur:</label>
                 <select id="author" v-model="bookTemp.author_id" required>
-                    <option v-for="author in getAllAuthors" :key="author.id" :value="author.id">
+                    <option v-for="author in allAuthors" :key="author.id" :value="author.id">
                         {{ author.name }}
                     </option>
                 </select>

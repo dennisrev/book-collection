@@ -1,14 +1,14 @@
 <script setup lang="ts">
 
 import { onMounted } from 'vue'; 
-import { fetchAuthors, getAllAuthors } from '../store'; 
+import { authorStore } from '../store.js';
 import AuthorTable from '../components/AuthorTable.vue';
 
 onMounted(() => {
-    fetchAuthors();
+    authorStore.actions.getAll();
 });
 
-const allAuthors = getAllAuthors;
+const allAuthors = authorStore.getters.all;
 
 </script>
 

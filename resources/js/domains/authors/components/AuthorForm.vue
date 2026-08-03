@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import {ref} from 'vue';
-import type {Author} from '../store';
+import { ref } from 'vue';
+import type { Author } from '../store';
 
 const props = defineProps<{
     author: Author;

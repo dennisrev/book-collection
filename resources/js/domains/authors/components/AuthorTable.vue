@@ -1,10 +1,15 @@
 <script setup lang="ts">
-import type {Author} from '../store';
-import {deleteAuthor} from '../store';
+import type { Author } from '../store';
+
+import { authorStore } from '../store';
 
 const props = defineProps<{
     authors: Author[];
 }>();
+
+const handleAuthorDelete = async (id:number) => {
+    await authorStore.actions.delete(id);
+};
 </script>
 
 <template>
@@ -20,7 +25,7 @@ const props = defineProps<{
                 </RouterLink>
             </td>
             <td>
-                <button @click="deleteAuthor(author.id)">Verwijderen</button>
+                <button @click="handleAuthorDelete(author.id)">Verwijderen</button>
             </td>
         </tr>
     </table>

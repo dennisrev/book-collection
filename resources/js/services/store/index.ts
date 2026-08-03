@@ -2,10 +2,11 @@ import { ref, computed } from 'vue';
 import { deleteRequest, getRequest, postRequest, putRequest } from '../http';
 
 export const storeModuleFactory = (moduleName: string) => {
+    
     const state = ref<Record<number, any>>({});
 
     const getters = {
-        all: computed(() => state.value),
+        all: computed(() => Object.values(state.value)),
         getById: (id: number) => computed(() => state.value[id]),
     };
 
@@ -35,8 +36,12 @@ export const storeModuleFactory = (moduleName: string) => {
             setters.setAll(data);
         },
         delete: async (id: number) => {
-            await deleteRequest(`${moduleName}/${id}`);
-            setters.deleteById(id);
+            try {
+                await deleteRequest(`${moduleName}/${id}`);
+                setters.deleteById(id);
+            } catch (error: any) {
+                alert(error.response.data.message);
+            }
         }
     };
 

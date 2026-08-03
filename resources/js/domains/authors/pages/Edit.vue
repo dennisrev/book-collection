@@ -1,21 +1,20 @@
 <script setup lang="ts">
 import AuthorForm from '../components/AuthorForm.vue';
-import type {Author} from '../store';
-import {onMounted} from 'vue';
-import {fetchAuthors, updateAuthor, getAuthorById} from '../store';
-import {useRoute, useRouter} from 'vue-router';
+import { authorStore } from '../store';
+import { onMounted } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 
 const route = useRoute();
 const router = useRouter();
 
 onMounted(() => {
-    fetchAuthors();
+    authorStore.actions.getAll();
 });
 
-const author = getAuthorById(Number(route.params.id));
+const author = authorStore.getters.getById(Number(route.params.id));
 
 const handleAuthorSubmit = async (data: Author) => {
-    await updateAuthor(data);
+    await authorStore.actions.update(data);
     router.push({name: 'authors.overview'});
 };
 </script>
