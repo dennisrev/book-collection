@@ -26,6 +26,11 @@ const handleBookDelete = async (id: number) => {
                 <td>{{ book.summary }}</td>
                 <td>{{ authorStore.getters.getById(book.author_id).value?.name }}</td>
                 <td>
+                    <RouterLink :to="{name: 'books.show', params: {id: book.id}}">
+                        <button type="button">Boek tonen</button>
+                    </RouterLink>
+                </td>
+                <td>
                     <RouterLink :to="{name: 'books.edit', params: {id: book.id}}">
                         <button type="button">Bewerken</button>
                     </RouterLink>

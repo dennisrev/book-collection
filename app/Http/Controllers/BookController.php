@@ -14,6 +14,11 @@ class BookController extends Controller
         return BookResource::collection($books);
     }
 
+    public function show(Book $book)
+    {
+        return BookResource::collection($book);
+    }
+
     public function store(StoreBookRequest $request)
     {
         Book::create($request->validated());

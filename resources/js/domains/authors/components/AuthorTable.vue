@@ -16,9 +16,6 @@ const handleAuthorDelete = async (id: number) => {
 <template>
     <table>
         <tbody>
-            <!-- <div v-if="getMessage">
-                {{ getMessage }}
-            </div> -->
             <tr>
                 <th>Name</th>
             </tr>
