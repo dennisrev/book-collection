@@ -1,8 +1,8 @@
-import { ref, computed } from 'vue';
-import { deleteRequest, getRequest, postRequest, putRequest } from '../http';
+import {ref, computed} from 'vue';
+import {deleteRequest, getRequest, postRequest, putRequest} from '../http';
+import {destroyErrors, destroyMessage, getMessage} from '../error';
 
 export const storeModuleFactory = (moduleName: string) => {
-    
     const state = ref<Record<number, any>>({});
 
     const getters = {
@@ -21,17 +21,17 @@ export const storeModuleFactory = (moduleName: string) => {
 
     const actions = {
         getAll: async () => {
-            const  { data } = await getRequest(moduleName);
+            const {data} = await getRequest(moduleName);
             if (!data) return;
             setters.setAll(data);
         },
         create: async (item: {id: number; [key: string]: any}) => {
-            const { data } = await postRequest(`${moduleName}`, item);
+            const {data} = await postRequest(`${moduleName}`, item);
             if (!data) return;
             setters.setAll(data);
         },
         update: async (item: {id: number; [key: string]: any}) => {
-            const { data } = await putRequest(`${moduleName}/${item.id}`, item);
+            const {data} = await putRequest(`${moduleName}/${item.id}`, item);
             if (!data) return;
             setters.setAll(data);
         },
@@ -41,9 +41,11 @@ export const storeModuleFactory = (moduleName: string) => {
                 setters.deleteById(id);
             } catch (error: any) {
                 alert(error.response.data.message);
+                destroyErrors();
+                destroyMessage();
             }
-        }
+        },
     };
 
-    return { getters, setters, actions };
+    return {getters, setters, actions};
 };

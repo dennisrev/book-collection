@@ -1,4 +1,4 @@
-import { computed, ref } from 'vue';
+import {computed, ref} from 'vue';
 
 interface ErrorBag {
     [property: string]: string[];
@@ -13,9 +13,9 @@ export const getMessage = computed(() => message.value);
 export const getErrorBagByProperty = (property: string) => computed(() => errorBag.value[property]);
 
 export const setErrorBag = (bag: ErrorBag) => (errorBag.value = bag);
-export const setMessage = (newMesage: string) => {
-    message.value = newMesage || 'Er is een fout opgetreden';
+export const setMessage = (newMessage: string) => {
+    message.value = newMessage || 'Er is een fout opgetreden';
 };
 
-export const destroyErrors = () => (errorBag.value ={});
-export const destroyMessage = () => (message.value ='');
+export const destroyErrors = () => (errorBag.value = {});
+export const destroyMessage = () => (message.value = '');
