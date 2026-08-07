@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import AuthorForm from '../components/AuthorForm.vue';
 import { authorStore } from '../store';
+import type { Author } from '../store';
 import { onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 

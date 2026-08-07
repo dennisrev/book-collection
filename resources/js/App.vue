@@ -1,19 +1,20 @@
 <template>
     <nav>
         <div align="center">
-            <RouterLink :to="{name: 'books.overview'}">Overzicht boeken</RouterLink>
-        </div>
-        <div align="center">
-            <RouterLink :to="{name: 'books.create'}">Nieuw boek toevoegen</RouterLink>
-        </div>
-        <div align="center">
-            <RouterLink :to="{name: 'authors.create'}">Nieuwe auteur toevoegen</RouterLink>
-        </div>
-        <div align="center">
-            <RouterLink :to="{name: 'authors.overview'}">Overzicht auteurs</RouterLink>
+            <RouterLink :to="{name: 'books.overview'}">
+                <button type="button">Overzicht boeken</button>
+            </RouterLink>
+            <RouterLink :to="{name: 'books.create'}">
+                <button type="button">Boek toevoegen</button>
+            </RouterLink>
+            <RouterLink :to="{name: 'authors.overview'}">
+                <button type="button">Overzicht auteurs</button>
+            </RouterLink>
+            <RouterLink :to="{name: 'authors.create'}">
+                <button type="button">Auteur toevoegen</button>
+            </RouterLink>
         </div>
     </nav>
-    <hr />
     <main>
         <RouterView></RouterView>
     </main>

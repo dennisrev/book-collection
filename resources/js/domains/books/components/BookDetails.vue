@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type {Book} from '../store';
 
-//import {bookStore} from '../store';
 import {authorStore} from '../../authors/store';
 
 const props = defineProps<{

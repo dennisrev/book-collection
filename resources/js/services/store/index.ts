@@ -1,6 +1,6 @@
 import {ref, computed} from 'vue';
 import {deleteRequest, getRequest, postRequest, putRequest} from '../http';
-import {destroyErrors, destroyMessage, getMessage} from '../error';
+import {destroyErrors, destroyMessage} from '../error';
 
 export const storeModuleFactory = (moduleName: string) => {
     const state = ref<Record<number, any>>({});
@@ -8,6 +8,9 @@ export const storeModuleFactory = (moduleName: string) => {
     const getters = {
         all: computed(() => Object.values(state.value)),
         getById: (id: number) => computed(() => state.value[id]),
+        getAllByBookId: (id: number) => computed(() => {
+            return Object.values(state.value).filter(review => review.book_id === id);
+        }),
     };
 
     const setters = {
